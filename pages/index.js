@@ -11,7 +11,9 @@ export default function Home() {
     <>
       <h1>Game Store</h1>
       <h2>
-        <Link href="/games/godofwar">God of War</Link>
+        <Link href="/games/godofwar">
+          <Image src="/GodofWarfront.jpg" height={350} width={616} alt="" />
+        </Link>
       </h2>
     </>
   );
