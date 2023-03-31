@@ -9,10 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <Layout>
-      <Head>
-        <title>Awesome Video Games</title>
-      </Head>
+    <Layout pageTitle="Awesome Games">
       <h2>
         <Link href="/games/godofwar">
           <Image src="/GodofWarfront.jpg" height={350} width={616} alt="" />
