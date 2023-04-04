@@ -1,5 +1,21 @@
-.home {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+.background {
+  display: flex;
+  height: 6rem;
+  justify-content: space-between;
+  background-color: #333;
+}
+
+.textHome {
+  font-size: 2rem;
+  line-height: 2.5rem;
   font-weight: bold;
+  color: aliceblue;
+  padding: 2rem 16px;
+}
+
+.textRight {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: aliceblue;
+  padding: 2rem 16px;
 }
