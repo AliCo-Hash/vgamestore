@@ -8,8 +8,12 @@ export default function Navbar() {
         Awesome Games
       </Link>
       <div className={styles.textRight}>
-        <Link href="/cart">Cart</Link>
-        <Link href="/signin">Sign in</Link>
+        <Link className={styles.textCart} href="/cart">
+          Cart
+        </Link>
+        <Link className={styles.textSignIn} href="/signin">
+          Sign in
+        </Link>
       </div>
     </nav>
   );
