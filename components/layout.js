@@ -1,5 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/layout.module.css";
+import Navbar from "./navbar";
+import Footer from "./footer";
 
 export default function Layout({ pageTitle, children }) {
   return (
@@ -8,10 +10,11 @@ export default function Layout({ pageTitle, children }) {
         <title>{pageTitle}</title>
         <link rel="icon" href="/siteicon.png" />
       </Head>
+
       <div className={styles.container}>
-        <header>header</header>
+        <Navbar />
         <main>{children}</main>
-        <footer>footer</footer>
+        <Footer />
       </div>
     </>
   );
