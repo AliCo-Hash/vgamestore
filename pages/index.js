@@ -12,7 +12,12 @@ export default function Home() {
     <Layout pageTitle="Awesome Games">
       <h2>
         <Link href="/games/godofwar">
-          <Image src="/GodofWarfront.jpg" height={350} width={616} alt="" />
+          <Image
+            src="/godofwar/GodofWarfront.jpg"
+            height={350}
+            width={616}
+            alt=""
+          />
         </Link>
       </h2>
     </Layout>
