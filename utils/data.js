@@ -4,6 +4,7 @@ const data = {
       name: "God of War",
       slug: "god-of-war",
       coverImage: "/gameimages/godofwar/GodofWarfront.jpg",
+      trailer: "HqQMh_tij0c",
       price: 39.99,
       platform: "Steam",
       description:
