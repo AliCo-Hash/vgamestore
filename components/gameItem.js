@@ -4,7 +4,7 @@ import styles from "../styles/homeGame.module.css";
 
 export default function GameItem({ game }) {
   return (
-    <div className={styles.gameCard}>
+    <div>
       <Link href={`/games/${game.slug}`}>
         <Image
           className={styles.frontImage}
@@ -16,9 +16,9 @@ export default function GameItem({ game }) {
       </Link>
 
       <div className={styles.cardDescription}>
-        <p className={styles.gamePrice}>£{game.price}</p>
-        <p className={styles.gamePlatform}>{game.platform}</p>
-        <button className="addtocart" type="button">
+        <p>£{game.price}</p>
+        <p>{game.platform}</p>
+        <button className={styles.addToCart} type="button">
           Add to Cart
         </button>
       </div>
