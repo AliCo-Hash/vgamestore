@@ -6,12 +6,10 @@ export default function GameItem({ game }) {
   return (
     <div>
       <Link href={`/games/${game.slug}`}>
-        <Image
+        <img
           className={styles.frontImage}
           src={game.coverImage}
           alt={game.name}
-          height={350}
-          width={616}
         />
       </Link>
 

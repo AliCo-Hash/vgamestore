@@ -27,6 +27,33 @@ const data = {
       description:
         "The forest of Nibel is dying. After a powerful storm sets a series of devastating events in motion, Ori must journey to find courage and confront a dark nemesis to save the forest of Nibel. “Ori and the Blind Forest” tells the tale of a young orphan destined for heroics, through a visually stunning Action-Platformer crafted by Moon Studios. Featuring hand-painted artwork, meticulously animated character performance, a fully orchestrated score and dozens of new features in the Definitive Edition, “Ori and the Blind Forest” explores a deeply emotional story about love and sacrifice, and the hope that exists in us all.",
     },
+    {
+      name: "Curse of the Dead Gods",
+      slug: "curse-of-the-dead-gods",
+      coverImage: "/gameimages/curseofthedeadgods/CurseOfTheDeadGodsMain.jpg",
+      price: 17.99,
+      platform: "Steam",
+      description:
+        "You seek untold riches, eternal life, divine powers - it leads to this accursed temple, a seemingly-infinite labyrinth of bottomless pits, deadly traps, and monsters.",
+    },
+    {
+      name: "Hollow Knight",
+      slug: "hollow-knight",
+      coverImage: "/gameimages/hollowknight/hollowknightMain.png",
+      price: 12.79,
+      platform: "Steam",
+      description:
+        "Beneath the fading town of Dirtmouth sleeps an ancient, ruined kingdom. Many are drawn below the surface, searching for riches, or glory, or answers to old secrets.",
+    },
+    {
+      name: "Borderlands 3",
+      slug: "borderlands-3",
+      coverImage: "/gameimages/borderlands3/borderlands3Main.webp",
+      price: 49.99,
+      platform: "Epic Games",
+      description:
+        "Stop the fanatical Calypso Twins from uniting the bandit clans and claiming the galaxy’s ultimate power. Only you, a thrill-seeking Vault Hunter, have the arsenal and allies to take them down.",
+    },
   ],
 };
 

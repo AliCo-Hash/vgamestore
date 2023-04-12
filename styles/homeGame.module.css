@@ -1,15 +1,27 @@
+.mainGame {
+  padding: 0px 250px;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 768px) {
+  .mainGame {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.frontImage {
+  height: 250px;
+  width: 100%;
+}
+
 .cardDescription {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 5px;
-}
-
-.mainGame {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+  color: aliceblue;
 }
 
 .addToCart {
@@ -21,8 +33,9 @@
   background-color: grey;
   color: aliceblue;
   font-weight: bold;
-  width: 95%;
+  width: 100%;
   height: 30px;
+  overflow: hidden;
 }
 
 .addToCart:hover {
