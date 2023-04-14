@@ -24,10 +24,11 @@ export default function GameScreen() {
             width={600}
           />
         </div>
-        <section>
+        <div>
+          <div className={styles.priceCard}>£{game.price}</div>
           <div className={styles.gameDescriptionTitle}>Game Description</div>
           <p className={styles.gameDescription}>{game.description}</p>
-        </section>
+        </div>
       </div>
     </Layout>
   );

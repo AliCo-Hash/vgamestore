@@ -23,3 +23,8 @@
 .gameDescriptionTitle {
   font-size: large;
 }
+
+.priceCard {
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
