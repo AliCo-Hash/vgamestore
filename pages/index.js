@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <Layout pageTitle="Awesome Games">
-      <div className={styles.mainGame}>
+      <div className={styles.mainGames}>
         {data.games.map(game => (
           <GameItem game={game} key={game.slug}></GameItem>
         ))}

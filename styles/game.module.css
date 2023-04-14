@@ -1,0 +1,25 @@
+.individualGameMain {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 1rem;
+  row-gap: 1rem;
+  color: aliceblue;
+}
+
+.mainImage {
+  grid-column: span 2 / span 2;
+}
+
+.gameNameTitle {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.gameDescription {
+  color: aliceblue;
+  padding-top: 10px;
+}
+
+.gameDescriptionTitle {
+  font-size: large;
+}

@@ -1,8 +1,9 @@
 import Layout from "@/components/layout";
 import data from "@/utils/data";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
-import YouTube from "react-youtube";
+import styles from "styles/game.module.css";
 
 export default function GameScreen() {
   const { query } = useRouter();
@@ -11,8 +12,23 @@ export default function GameScreen() {
 
   return (
     <Layout pageTitle={game.name}>
-      <h1>{game.name}</h1>
-      <YouTube videoId={game.trailer} />
+      <div className={styles.individualGameMain}>
+        <div>
+          <h1 className={styles.gameNameTitle}>{game.name}</h1>
+        </div>
+        <div className={styles.mainImage}>
+          <Image
+            src={game.coverImage}
+            alt={game.name}
+            height={300}
+            width={600}
+          />
+        </div>
+        <section>
+          <div className={styles.gameDescriptionTitle}>Game Description</div>
+          <p className={styles.gameDescription}>{game.description}</p>
+        </section>
+      </div>
     </Layout>
   );
 }
