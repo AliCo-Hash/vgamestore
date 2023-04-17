@@ -39,7 +39,7 @@
   width: 5rem;
 }
 
-.addToCart:hover {
+.addToCart :hover {
   background-color: #8a2be2;
 }
 
