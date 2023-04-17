@@ -25,7 +25,12 @@ export default function GameScreen() {
           />
         </div>
         <div>
-          <div className={styles.priceCard}>£{game.price}</div>
+          <div className={styles.priceCard}>
+            <div>£{game.price}</div>
+            <div>
+              <button className={styles.addToCart}>Add to cart</button>
+            </div>
+          </div>
           <div className={styles.gameDescriptionTitle}>Game Description</div>
           <p className={styles.gameDescription}>{game.description}</p>
         </div>
