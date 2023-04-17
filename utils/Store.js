@@ -24,3 +24,11 @@ function reducer(state, action) {
       return state;
   }
 }
+
+import React from "react";
+
+export default function StoreProvider({ children }) {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const value = { state, dispatch };
+  return <StoreProvider value={value}>{children}</StoreProvider>;
+}
