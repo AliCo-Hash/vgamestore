@@ -3,7 +3,10 @@ import styles from "../styles/layout.module.css";
 import Navbar from "./navbar";
 import Footer from "./footer";
 
+
 export default function Layout({ pageTitle, children }) {
+  
+
   return (
     <>
       <Head>

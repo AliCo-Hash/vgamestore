@@ -25,10 +25,8 @@ function reducer(state, action) {
   }
 }
 
-import React from "react";
-
-export default function StoreProvider({ children }) {
+export function StoreProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
   const value = { state, dispatch };
-  return <StoreProvider value={value}>{children}</StoreProvider>;
+  return <Store.Provider value={value}>{children}</Store.Provider>;
 }

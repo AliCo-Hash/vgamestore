@@ -27,3 +27,14 @@
 .textSignIn {
   padding-right: 16px;
 }
+
+.cart {
+  margin-left: 4px;
+  border-radius: 9999px;
+  background-color: aqua;
+  padding: 4px 8px;
+  font-size: 12px;
+  line-height: 1rem;
+  font-weight: bold;
+  color: aliceblue;
+}
