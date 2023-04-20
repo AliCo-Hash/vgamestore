@@ -65,6 +65,16 @@ export default function CartPage() {
               </tbody>
             </table>
           </div>
+          <div className={styles.cartSummary}>
+            <ul style={{ listStyle: "none" }}>
+              <li>
+                <div className={styles.cartSubtotal}>
+                  Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}) : £{" "}
+                  {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       )}
     </Layout>
