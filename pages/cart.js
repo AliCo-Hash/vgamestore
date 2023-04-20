@@ -6,8 +6,9 @@ import { useContext } from "react";
 import styles from "styles/cart.module.css";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 
-export default function CartPage() {
+function CartPage() {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const {
@@ -107,3 +108,5 @@ export default function CartPage() {
     </Layout>
   );
 }
+
+export default dynamic(() => Promise.resolve(CartPage), { ssr: false });
