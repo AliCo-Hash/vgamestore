@@ -9,14 +9,12 @@
   font-size: 2rem;
   line-height: 2.5rem;
   font-weight: bold;
-  color: aliceblue;
   padding: 2rem 16px;
 }
 
 .textRight {
   font-size: 1rem;
   line-height: 1.5rem;
-  color: aliceblue;
   padding: 2rem 16px;
 }
 
@@ -31,10 +29,9 @@
 .cart {
   margin-left: 4px;
   border-radius: 9999px;
-  background-color: aqua;
+  background-color: #7cb9e8;
   padding: 4px 8px;
   font-size: 12px;
   line-height: 1rem;
   font-weight: bold;
-  color: aliceblue;
 }

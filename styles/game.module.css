@@ -3,7 +3,6 @@
   grid-template-columns: repeat(2, 1fr);
   column-gap: 1rem;
   row-gap: 1rem;
-  color: aliceblue;
 }
 
 .mainImage {
@@ -16,7 +15,6 @@
 }
 
 .gameDescription {
-  color: aliceblue;
   padding-top: 10px;
 }
 
@@ -34,8 +32,6 @@
   cursor: pointer;
   border: none;
   background-color: grey;
-  color: aliceblue;
-  font-weight: bold;
   width: 5rem;
 }
 
