@@ -13,7 +13,7 @@ export default function GameScreen() {
   const game = data.games.find(e => e.slug === slug);
 
   const addToCartHandler = () => {
-    const existItem = state.cart.cartItems.find(e => slug === game.slug);
+    const existItem = state.cart.cartItems.find(e => e.slug === game.slug);
     const quantity = existItem ? existItem.quantity + 1 : 1;
     dispatch({ type: "CART_ADD_ITEM", payload: { ...game, quantity } });
   };
