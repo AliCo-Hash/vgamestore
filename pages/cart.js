@@ -5,8 +5,10 @@ import Link from "next/link";
 import { useContext } from "react";
 import styles from "styles/cart.module.css";
 import { TrashIcon } from "@heroicons/react/24/outline";
+import { useRouter } from "next/router";
 
 export default function CartPage() {
+  const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const {
     cart: { cartItems },
@@ -69,9 +71,17 @@ export default function CartPage() {
             <ul style={{ listStyle: "none" }}>
               <li>
                 <div className={styles.cartSubtotal}>
-                  Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}) : £{" "}
+                  SUBTOTAL ({cartItems.reduce((a, c) => a + c.quantity, 0)}) : £{" "}
                   {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
                 </div>
+              </li>
+              <li>
+                <button
+                  onClick={() => router.push("/order")}
+                  className={styles.cartProceed}
+                >
+                  PROCEED TO PAYMENT
+                </button>
               </li>
             </ul>
           </div>

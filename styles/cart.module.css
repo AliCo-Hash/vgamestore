@@ -53,9 +53,11 @@
   width: 1.25rem;
   height: 1.25rem;
   fill: transparent;
+  cursor: pointer;
 }
 
 .cartSummary {
+  text-align: center;
   border: none;
   padding: 1.25rem;
   background: #141010;
@@ -63,7 +65,15 @@
 
 .cartSubtotal {
   padding-bottom: 0.75rem;
-  text-align: center;
   font-weight: bold;
   font-size: larger;
+}
+
+.cartProceed {
+  padding: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+  background: #8a2be2;
+  color: aliceblue;
 }
