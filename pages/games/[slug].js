@@ -48,3 +48,23 @@ export default function GameScreen() {
     </Layout>
   );
 }
+
+export async function getStaticPaths() {
+  const paths = data.games.map(game => ({ params: { slug: game.slug } }));
+
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({ params }) {
+  const { slug } = params;
+  const game = data.games.find(game => game.slug === slug);
+
+  return {
+    props: {
+      game,
+    },
+  };
+}

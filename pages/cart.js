@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useContext } from "react";
 import styles from "styles/cart.module.css";
-import TrashIcon from "@heroicons/react/24/outline/XCircleIcon";
+import { TrashIcon } from "@heroicons/react/24/outline";
 
 export default function CartPage() {
   const { state } = useContext(Store);
@@ -41,10 +41,10 @@ export default function CartPage() {
                         className={styles.cartGame}
                       >
                         <Image
-                          src={item.image}
+                          src={item.coverImage}
                           alt={item.name}
-                          width={50}
-                          height={50}
+                          width={200}
+                          height={100}
                         ></Image>
                         &nbsp;
                         {item.name}
@@ -54,9 +54,7 @@ export default function CartPage() {
                     <td className={styles.cartPrice}>{item.price}</td>
                     <td className={styles.cartItemDelete}>
                       <button>
-                        <TrashIcon
-                          className={styles.itemDeleteButton}
-                        ></TrashIcon>
+                        <TrashIcon className={styles.itemDeleteButton} />
                       </button>
                     </td>
                   </tr>
