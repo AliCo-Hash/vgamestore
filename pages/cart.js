@@ -16,6 +16,10 @@ export default function CartPage() {
   const removeItemHandler = item => {
     dispatch({ type: "CART_REMOVE_ITEM", payload: item });
   };
+  const updateCartHandler = (item, qty) => {
+    const quantity = Number(qty);
+    dispatch({ type: "CART_ADD_ITEM", payload: { ...item, quantity } });
+  };
 
   return (
     <Layout pageTitle="Your Basket">
@@ -55,7 +59,18 @@ export default function CartPage() {
                         {item.name}
                       </Link>
                     </td>
-                    <td className={styles.cartQuantity}>{item.quantity}</td>
+                    <td className={styles.cartQuantity}>
+                      <select
+                        value={item.quantity}
+                        onChange={e => updateCartHandler(item, e.target.value)}
+                      >
+                        {[...Array(10).keys()].map(x => (
+                          <option key={x + 1} value={x + 1}>
+                            {x + 1}
+                          </option>
+                        ))}
+                      </select>
+                    </td>
                     <td className={styles.cartPrice}>{item.price}</td>
                     <td className={styles.cartItemDelete}>
                       <button onClick={() => removeItemHandler(item)}>
@@ -72,7 +87,9 @@ export default function CartPage() {
               <li>
                 <div className={styles.cartSubtotal}>
                   SUBTOTAL ({cartItems.reduce((a, c) => a + c.quantity, 0)}) : £{" "}
-                  {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
+                  {cartItems
+                    .reduce((a, c) => a + c.quantity * c.price, 0)
+                    .toFixed(2)}
                 </div>
               </li>
               <li>
