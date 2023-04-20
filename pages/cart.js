@@ -7,10 +7,13 @@ import styles from "styles/cart.module.css";
 import { TrashIcon } from "@heroicons/react/24/outline";
 
 export default function CartPage() {
-  const { state } = useContext(Store);
+  const { state, dispatch } = useContext(Store);
   const {
     cart: { cartItems },
   } = state;
+  const removeItemHandler = item => {
+    dispatch({ type: "CART_REMOVE_ITEM", payload: item });
+  };
 
   return (
     <Layout pageTitle="Your Basket">
@@ -53,7 +56,7 @@ export default function CartPage() {
                     <td className={styles.cartQuantity}>{item.quantity}</td>
                     <td className={styles.cartPrice}>{item.price}</td>
                     <td className={styles.cartItemDelete}>
-                      <button>
+                      <button onClick={() => removeItemHandler(item)}>
                         <TrashIcon className={styles.itemDeleteButton} />
                       </button>
                     </td>
