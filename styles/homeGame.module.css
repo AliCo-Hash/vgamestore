@@ -9,6 +9,11 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+@media (min-width: 1200px) {
+  .mainGames {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 
 .frontImage {
   height: 250px;
