@@ -38,13 +38,8 @@
 }
 
 .priceCard {
-  margin-top: 25px;
-  margin-left: 10px;
   font-size: large;
   font-weight: bold;
-}
-.price {
-  padding-left: 20px;
 }
 
 .addToCartButton {
