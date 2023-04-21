@@ -23,30 +23,31 @@ export default function GameScreen() {
       <div className={styles.individualGameMain}>
         <div>
           <h1 className={styles.gameNameTitle}>{game.name}</h1>
-        </div>
-        <div className={styles.mainImage}>
-          <Image
-            src={game.coverImage}
-            alt={game.name}
-            height={300}
-            width={600}
-          />
-        </div>
-        <div>
-          <div className={styles.priceCard}>
-            <div>£{game.price}</div>
-            <div>
-              <button className={styles.addToCart} onClick={addToCartHandler}>
-                Add to cart
-              </button>
-            </div>
+          <div className={styles.mainImage}>
+            <Image src={game.coverImage} alt={game.name} fill />
           </div>
-          <div className={styles.gameDescriptionTitle}>Game Description</div>
-          <div className={styles.gameDescription}>{game.description}</div>
+          <div>
+            <div className={styles.gameDescriptionTitle}>Game Description</div>
+            <div className={styles.gameDescription}>{game.description}</div>
+          </div>
+        </div>
+        <div className={styles.priceCard}>
+          <div className={styles.price}>£{game.price}</div>
+          <div>
+            <button
+              className={styles.addToCartButton}
+              onClick={addToCartHandler}
+            >
+              Add to cart
+            </button>
+          </div>
         </div>
       </div>
     </Layout>
   );
+}
+
+{
 }
 
 export async function getStaticPaths() {
