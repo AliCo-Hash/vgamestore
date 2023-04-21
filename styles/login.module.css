@@ -40,3 +40,8 @@
   padding: 9px 12px;
   width: 100%;
 }
+
+.emailMissingMessage {
+  color: red;
+  padding-left: 10px;
+}
