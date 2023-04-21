@@ -42,7 +42,7 @@ export default function GameScreen() {
             </div>
           </div>
           <div className={styles.gameDescriptionTitle}>Game Description</div>
-          <p className={styles.gameDescription}>{game.description}</p>
+          <div className={styles.gameDescription}>{game.description}</div>
         </div>
       </div>
     </Layout>

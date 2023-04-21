@@ -12,7 +12,7 @@ export default function Navbar() {
   }, [cart.cartItems]);
 
   return (
-    <nav className={styles.background}>
+    <nav className={styles.container}>
       <Link className={styles.textHome} href="/">
         Awesome Games
       </Link>
