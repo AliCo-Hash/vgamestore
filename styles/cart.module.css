@@ -5,7 +5,19 @@
 
 .cartGrid {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  gap: 5px;
+}
+
+@media (min-width: 768px) {
+  .cartGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .cartGrid {
+    grid-template-columns: 3fr 1fr;
+  }
 }
 
 .cartBox {
