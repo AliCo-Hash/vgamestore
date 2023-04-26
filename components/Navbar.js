@@ -2,18 +2,26 @@ import Link from "next/link";
 import styles from "../styles/navbar.module.css";
 import { useContext, useState, useEffect } from "react";
 import { Store } from "@/utils/Store";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { Menu } from "@headlessui/react";
 import DropdownLink from "./DropdownLink";
+import Cookies from "js-cookie";
 
 export default function Navbar() {
-  const { state } = useContext(Store);
+  const { state, dispatch } = useContext(Store);
   const cart = state.cart;
   const [cartItemsCount, setCartItemsCount] = useState(0);
+  const { status, data: session } = useSession();
+
   useEffect(() => {
     setCartItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
   }, [cart.cartItems]);
-  const { status, data: session } = useSession();
+
+  const logoutClickHandler = () => {
+    Cookies.remove("cart");
+    dispatch({ type: "CART_RESET" });
+    signOut({ callbackUrl: "/signin" });
+  };
 
   return (
     <nav className={styles.container}>
@@ -52,7 +60,7 @@ export default function Navbar() {
                 <a
                   className={styles.dropdownLink}
                   href="#"
-                  // onClick={logoutClickHandler}
+                  onClick={logoutClickHandler}
                 >
                   Logout
                 </a>
