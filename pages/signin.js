@@ -1,4 +1,4 @@
-import Layout from "@/components/layout";
+import Layout from "@/components/Layout";
 import Link from "next/link";
 import styles from "styles/login.module.css";
 import { useForm } from "react-hook-form";

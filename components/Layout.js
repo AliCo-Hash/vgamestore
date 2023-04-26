@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/layout.module.css";
-import Navbar from "./navbar";
-import Footer from "./footer";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

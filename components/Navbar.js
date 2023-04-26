@@ -3,6 +3,8 @@ import styles from "../styles/navbar.module.css";
 import { useContext, useState, useEffect } from "react";
 import { Store } from "@/utils/Store";
 import { useSession } from "next-auth/react";
+import { Menu } from "@headlessui/react";
+import DropdownLink from "./DropdownLink";
 
 export default function Navbar() {
   const { state } = useContext(Store);
@@ -28,7 +30,17 @@ export default function Navbar() {
         {status === "loading" ? (
           "Loading"
         ) : session?.user ? (
-          session.user.name
+          <Menu as="div" className={styles.dropdown}>
+            <Menu.Button className={styles.dropdownBtn}>
+              {session.user.name}
+            </Menu.Button>
+            <Menu.Items className={styles.dropdownContents}></Menu.Items>
+            <Menu.Items>
+              <DropdownLink className="dropdownLink" href="/profile">
+                Profile
+              </DropdownLink>
+            </Menu.Items>
+          </Menu>
         ) : (
           <Link className={styles.textSignIn} href="/signin">
             Sign in
