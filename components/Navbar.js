@@ -34,11 +34,29 @@ export default function Navbar() {
             <Menu.Button className={styles.dropdownBtn}>
               {session.user.name}
             </Menu.Button>
-            <Menu.Items className={styles.dropdownContents}></Menu.Items>
-            <Menu.Items>
-              <DropdownLink className="dropdownLink" href="/profile">
-                Profile
-              </DropdownLink>
+            <Menu.Items className={styles.dropdownContent}>
+              <Menu.Item>
+                <DropdownLink className={styles.dropdownLink} href="/profile">
+                  Profile
+                </DropdownLink>
+              </Menu.Item>
+              <Menu.Item>
+                <DropdownLink
+                  className={styles.dropdownLink}
+                  href="/order-history"
+                >
+                  Order History
+                </DropdownLink>
+              </Menu.Item>
+              <Menu.Item>
+                <a
+                  className={styles.dropdownLink}
+                  href="#"
+                  // onClick={logoutClickHandler}
+                >
+                  Logout
+                </a>
+              </Menu.Item>
             </Menu.Items>
           </Menu>
         ) : (

@@ -31,6 +31,7 @@
 .cart {
   margin-left: 4px;
   border-radius: 9999px;
+  background-color: #8a2be2;
   padding: 4px 8px;
   font-size: 12px;
   line-height: 1rem;
@@ -42,7 +43,7 @@
   position: relative;
 }
 
-.dropdown .dropdownBtn {
+.dropdownBtn {
   border: red;
   color: aliceblue;
   background: none;
@@ -54,12 +55,13 @@
 
 .dropdownContent {
   position: absolute;
-  right: 0;
-  width: 56px;
+  right: 0px;
+  width: 100px;
   transform-origin: top right;
-  background: white;
+  background: #222831;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  color: aliceblue;
 }
 
 .dropdownLink {
@@ -68,5 +70,5 @@
 }
 
 .dropdownLink:hover {
-  background: grey;
+  background: #8a2be2;
 }
