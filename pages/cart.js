@@ -95,7 +95,7 @@ function CartPage() {
               </li>
               <li>
                 <button
-                  onClick={() => router.push("login?redirect/order")}
+                  onClick={() => router.push("signin?redirect=/payment")}
                   className={styles.cartProceed}
                 >
                   PROCEED TO PAYMENT

@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout";
 import Link from "next/link";
-import styles from "styles/login.module.css";
+import styles from "styles/signin.module.css";
 import { useForm } from "react-hook-form";
 import { signIn, useSession } from "next-auth/react";
 import { getError } from "@/utils/error";
