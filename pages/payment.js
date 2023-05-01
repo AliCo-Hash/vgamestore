@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
@@ -14,5 +15,11 @@ export default function Payment() {
     router.push("/signin");
   }
 
-  return <Layout pageTitle="Payment">Payment Page</Layout>;
+  return (
+    <Layout pageTitle="Payment">
+      <PayPalScriptProvider>
+        <PayPalButtons />
+      </PayPalScriptProvider>
+    </Layout>
+  );
 }

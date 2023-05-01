@@ -97,7 +97,7 @@ const data = {
       platform: "Epic Games",
       description:
         "Stop the fanatical Calypso Twins from uniting the bandit clans and claiming the galaxy’s ultimate power. Only you, a thrill-seeking Vault Hunter, have the arsenal and allies to take them down.",
-      gameCodes: [],
+      gameCodes: ["YCPV-Q5ZS-DXVS-MHX5"],
     },
   ],
 };
