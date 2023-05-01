@@ -65,7 +65,7 @@ function CartPage() {
                         value={item.quantity}
                         onChange={e => updateCartHandler(item, e.target.value)}
                       >
-                        {[...Array(10).keys()].map(x => (
+                        {[...Array(item.gameCodes.length).keys()].map(x => (
                           <option key={x + 1} value={x + 1}>
                             {x + 1}
                           </option>
