@@ -10,28 +10,8 @@ export default function App({
   return (
     <SessionProvider session={session}>
       <StoreProvider>
-        {Component.auth ? (
-          <Auth>
-            <Component {...pageProps} />
-          </Auth>
-        ) : (
-          <Component {...pageProps} />
-        )}
+        <Component {...pageProps} />
       </StoreProvider>
     </SessionProvider>
   );
-}
-
-function Auth({ children }) {
-  const router = useRouter();
-  const { status } = useSession({
-    required: true,
-    onUnauthenticated() {
-      router.push("/signin");
-    },
-  });
-  if (status === "loading") {
-    return <div>Loading...</div>;
-  }
-  return children;
 }
