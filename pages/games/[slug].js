@@ -11,11 +11,14 @@ import Game from "@/models/Game";
 export default function GameScreen(props) {
   const { game } = props;
   const { state, dispatch } = useContext(Store);
-  const { query } = useRouter();
 
   const addToCartHandler = () => {
     const existItem = state.cart.cartItems.find(e => e.slug === game.slug);
     const quantity = existItem ? existItem.quantity + 1 : 1;
+
+    if (game.gameCodes.length < quantity) {
+      alert("Game is currently out of stock");
+    }
     dispatch({ type: "CART_ADD_ITEM", payload: { ...game, quantity } });
   };
 
