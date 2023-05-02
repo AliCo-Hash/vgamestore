@@ -5,12 +5,13 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import styles from "styles/game.module.css";
+import db from "@/utils/db";
+import Game from "@/models/Game";
 
-export default function GameScreen() {
+export default function GameScreen(props) {
+  const { game } = props;
   const { state, dispatch } = useContext(Store);
   const { query } = useRouter();
-  const { slug } = query;
-  const game = data.games.find(e => e.slug === slug);
 
   const addToCartHandler = () => {
     const existItem = state.cart.cartItems.find(e => e.slug === game.slug);
@@ -50,18 +51,15 @@ export default function GameScreen() {
 {
 }
 
-export async function getStaticPaths() {
-  const paths = data.games.map(game => ({ params: { slug: game.slug } }));
-
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }) {
+export async function getServerSideProps(context) {
+  const { params } = context;
   const { slug } = params;
-  const game = data.games.find(game => game.slug === slug);
+
+  await db.connect();
+  const game = await Game.findOne({ slug })
+    .lean()
+    .then(game => JSON.parse(JSON.stringify(game)));
+  await db.disconnect();
 
   return {
     props: {

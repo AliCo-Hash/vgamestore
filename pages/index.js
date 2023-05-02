@@ -21,11 +21,10 @@ export default function Home({games}) {
 
 export async function getServerSideProps() {
   await db.connect();
-  const games = await Game.find().lean();
-  const gamesJson = JSON.parse(JSON.stringify(games));
+  const games = await Game.find().lean().then((game) => JSON.parse(JSON.stringify(game)));
   return {
     props: {
-      games: gamesJson,
+      games,
     }
   }
 }
