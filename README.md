@@ -4,7 +4,6 @@ This is an e-commerce store that is being built using Next.js. It is a modern, l
 
 ## ToDo
 
-- Create Payment Method
 - Load Games from MongoDB instead of data.js
 - Create Place order page
 - Create signup page
