@@ -7,18 +7,23 @@ import { useContext } from "react";
 import styles from "styles/game.module.css";
 import db from "@/utils/db";
 import Game from "@/models/Game";
+import { toast } from "react-toastify";
 
 export default function GameScreen(props) {
   const { game } = props;
   const { state, dispatch } = useContext(Store);
 
-  const addToCartHandler = () => {
+  const addToCartHandler = async () => {
     const existItem = state.cart.cartItems.find(e => e.slug === game.slug);
     const quantity = existItem ? existItem.quantity + 1 : 1;
+    const data = await fetch(`/api/games/${game._id}`).then(data =>
+      data.json()
+    );
 
-    if (game.gameCodes.length < quantity) {
-      alert("Game is currently out of stock");
+    if (data.gameCodes.length < quantity) {
+      return toast.error("Sorry, Game is out of stock");
     }
+
     dispatch({ type: "CART_ADD_ITEM", payload: { ...game, quantity } });
   };
 
