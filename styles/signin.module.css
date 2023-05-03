@@ -41,7 +41,12 @@
   width: 100%;
 }
 
-.emailMissingMessage {
+.missingMessage {
   color: red;
   padding-left: 10px;
+}
+
+.register {
+  color: #a0d2eb;
+  text-decoration: underline;
 }

@@ -22,16 +22,30 @@ export default function SignInPage() {
   const {
     handleSubmit,
     register,
+    getValues,
     formState: { errors },
   } = useForm();
 
-  const submitHandler = async ({ email, password }) => {
+  const submitHandler = async ({ name, email, password }) => {
     try {
+      await fetch('api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body:JSON.stringify({
+          name,
+          email,
+          password,
+        })
+      });
+
       const result = await signIn("credentials", {
         redirect: false,
         email,
         password,
       });
+      
       if (result.error) {
         toast.error(result.error);
       }
@@ -43,7 +57,23 @@ export default function SignInPage() {
   return (
     <Layout pageTitle="Sign In">
       <form className={styles.form} onSubmit={handleSubmit(submitHandler)}>
-        <h1 className={styles.title}>Login</h1>
+        <h1 className={styles.title}>Sign Up</h1>
+        <div className={styles.inputSections}>
+          <label htmlFor="name">Full Name</label>
+          <input
+            type="text"
+            {...register("name", {
+              required: "Please enter full name",
+              pattern: /^[A-Za-z]+$/i,
+            })}
+            className={styles.inputBox}
+            id="name"
+            autoFocus
+          />
+          {errors.name && (
+            <span className={styles.missingMessage}>{errors.name.message}</span>
+          )}
+        </div>
         <div className={styles.inputSections}>
           <label htmlFor="email">Email</label>
           <input
@@ -57,7 +87,6 @@ export default function SignInPage() {
             })}
             className={styles.inputBox}
             id="email"
-            autoFocus
           />
           {errors.email && (
             <span className={styles.missingMessage}>
@@ -84,14 +113,32 @@ export default function SignInPage() {
             </span>
           )}
         </div>
-        <div>
-          <button className={styles.signInButton}>Login</button>
-        </div>
         <div className={styles.inputSections}>
-          don&apos;t have an account? &nbsp;
-          <Link className={styles.register} href="register">
-            Register
-          </Link>
+          <label htmlFor="confirmPassword">Confirm Password &nbsp;</label>
+          <input
+            type="password"
+            {...register("confirmPassword", {
+              required: "Please enter confirmPassword",
+              validate: value => value === getValues("password"),
+              minLength: {
+                value: 8,
+                message: "confirmPassword must be 8 or more characters long",
+              },
+            })}
+            id="confirmPassword"
+          />
+          {errors.confirmPassword && (
+            <span className={styles.missingMessage}>
+              {errors.confirmPassword.message}
+            </span>
+          )}
+          {errors.confirmPassword &&
+            errors.confirmPassword.type === "validate" && (
+              <div className={styles.missingMessage}>Password do not match</div>
+            )}
+        </div>
+        <div>
+          <button className={styles.signInButton}>Sign Up</button>
         </div>
       </form>
     </Layout>

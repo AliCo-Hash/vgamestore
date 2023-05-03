@@ -4,9 +4,7 @@ This is an e-commerce store that is being built using Next.js. It is a modern, l
 
 ## ToDo
 
-
-- Create Place order page
 - Create signup page
 - Integrate paypal
-- Maybe integrate shop payment method
+- Create profile screen
 - Create Order History screen
