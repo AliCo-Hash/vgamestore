@@ -28,16 +28,16 @@ export default function SignInPage() {
 
   const submitHandler = async ({ name, email, password }) => {
     try {
-      await fetch('api/auth/signup', {
-        method: 'POST',
+      await fetch("api/auth/signup", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body:JSON.stringify({
+        body: JSON.stringify({
           name,
           email,
           password,
-        })
+        }),
       });
 
       const result = await signIn("credentials", {
@@ -45,7 +45,7 @@ export default function SignInPage() {
         email,
         password,
       });
-      
+
       if (result.error) {
         toast.error(result.error);
       }
@@ -122,16 +122,10 @@ export default function SignInPage() {
               validate: value => value === getValues("password"),
               minLength: {
                 value: 8,
-                message: "confirmPassword must be 8 or more characters long",
               },
             })}
             id="confirmPassword"
           />
-          {errors.confirmPassword && (
-            <span className={styles.missingMessage}>
-              {errors.confirmPassword.message}
-            </span>
-          )}
           {errors.confirmPassword &&
             errors.confirmPassword.type === "validate" && (
               <div className={styles.missingMessage}>Password do not match</div>
