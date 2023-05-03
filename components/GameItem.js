@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "../styles/homeGame.module.css";
 
-export default function GameItem({ game }) {
+export default function GameItem({ game, addToCartHandler }) {
   return (
     <div>
       <Link href={`/games/${game.slug}`}>
@@ -15,7 +15,11 @@ export default function GameItem({ game }) {
       <div className={styles.cardDescription}>
         <p>£{game.price}</p>
         <p>{game.platform}</p>
-        <button className={styles.addToCart} type="button">
+        <button
+          className={styles.addToCart}
+          type="button"
+          onClick={() => addToCartHandler(game)}
+        >
           Add to Cart
         </button>
       </div>
