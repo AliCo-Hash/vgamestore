@@ -7,6 +7,7 @@ import styles from "styles/cart.module.css";
 import { TrashIcon } from "@heroicons/react/24/outline";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
+import { toast } from "react-toastify";
 
 function CartPage() {
   const router = useRouter();
@@ -17,8 +18,15 @@ function CartPage() {
   const removeItemHandler = item => {
     dispatch({ type: "CART_REMOVE_ITEM", payload: item });
   };
-  const updateCartHandler = (item, qty) => {
+  const updateCartHandler = async (item, qty) => {
     const quantity = Number(qty);
+    const data = await fetch(`/api/games/${item._id}`).then(data =>
+      data.json()
+    );
+    if (data.gameCodes.length < quantity) {
+      return toast.error("Sorry, Game is out of stock");
+    }
+
     dispatch({ type: "CART_ADD_ITEM", payload: { ...item, quantity } });
   };
 
