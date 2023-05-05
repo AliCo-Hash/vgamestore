@@ -10,3 +10,32 @@
     gap: 1rem;
   }
 }
+
+.cartCard {
+  border: none;
+}
+
+.cardTitle {
+  border: 0px solid #141010;
+  border-radius: 10px 10px 0px 0px;
+  font-weight: bold;
+  background-color: #707070;
+  height: 40px;
+  width: 200px;
+  padding-left: 20px;
+  padding-top: 11px;
+}
+
+.cardDesc {
+  border: 0px solid #141010;
+  border-radius: 0px 0px 10px 10px;
+  background-color: #141010;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  padding-left: 20px;
+}
+
+.totalPrice {
+  color: #8a2be2;
+  font-weight: bold;
+}
