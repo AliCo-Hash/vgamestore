@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import { StoreProvider } from "@/utils/Store";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { SessionProvider } from "next-auth/react";
 
 export default function App({
@@ -9,7 +10,9 @@ export default function App({
   return (
     <SessionProvider session={session}>
       <StoreProvider>
-        <Component {...pageProps} />
+        <PayPalScriptProvider>
+          <Component {...pageProps} />
+        </PayPalScriptProvider>
       </StoreProvider>
     </SessionProvider>
   );

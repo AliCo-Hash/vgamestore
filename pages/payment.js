@@ -13,6 +13,9 @@ export default function Payment() {
   const {
     cart: { cartItems },
   } = state;
+  const totalPrice = cartItems
+    .reduce((a, c) => a + c.quantity * c.price, 0)
+    .toFixed(2);
 
   if (status === "loading") {
     return <Layout>Loading...</Layout>;
@@ -25,18 +28,25 @@ export default function Payment() {
   return (
     <Layout pageTitle="Payment">
       <div className={styles.container}>
-        <PayPalScriptProvider>
-          <PayPalButtons />
-        </PayPalScriptProvider>
+        <PayPalButtons
+          createOrder={(data, actions) => {
+            return actions.order.create({
+              purchase_units: [
+                {
+                  amount: {
+                    value: totalPrice,
+                    currency_code: "GBP",
+                  },
+                },
+              ],
+            });
+          }}
+        />
         <div className={styles.cartCard}>
           <div className={styles.cardTitle}>Cart Summary</div>
           <div className={styles.cardDesc}>
             Total Price: £{" "}
-            <span className={styles.totalPrice}>
-              {cartItems
-                .reduce((a, c) => a + c.quantity * c.price, 0)
-                .toFixed(2)}{" "}
-            </span>
+            <span className={styles.totalPrice}>{totalPrice}</span>
           </div>
         </div>
       </div>
