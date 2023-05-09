@@ -21,13 +21,13 @@ export default function Payment() {
 
   useEffect(() => {
     const loadPaypalScript = async () => {
-      // const clientId = await fetch("/api/keys/paypal").then(response =>
-      //   response.json()
-      // );
+      const clientId = await fetch("/api/keys/paypal").then(response =>
+        response.json()
+      );
       dispatch({
         type: "resetOptions",
         value: {
-          "client-id": "test",
+          "client-id": clientId,
           currency: "GBP",
         },
       });
