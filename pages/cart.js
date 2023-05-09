@@ -20,8 +20,8 @@ function CartPage() {
   };
   const updateCartHandler = async (item, qty) => {
     const quantity = Number(qty);
-    const data = await fetch(`/api/games/${item._id}`).then(data =>
-      data.json()
+    const data = await fetch(`/api/games/${item._id}`).then(response =>
+      response.json()
     );
     if (data.gameCodes.length < quantity) {
       return toast.error("Sorry, Game is out of stock");

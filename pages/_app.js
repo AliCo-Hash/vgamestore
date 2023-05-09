@@ -10,7 +10,7 @@ export default function App({
   return (
     <SessionProvider session={session}>
       <StoreProvider>
-        <PayPalScriptProvider>
+        <PayPalScriptProvider deferLoading={true}>
           <Component {...pageProps} />
         </PayPalScriptProvider>
       </StoreProvider>
