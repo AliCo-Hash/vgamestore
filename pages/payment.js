@@ -5,11 +5,12 @@ import { useRouter } from "next/router";
 import styles from "../styles/payment.module.css";
 import { useContext, useEffect } from "react";
 import { Store } from "@/utils/Store";
+import Cookies from "js-cookie";
 
 export default function Payment() {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const { state } = useContext(Store);
+  const { state, dispatch } = useContext(Store);
   const {
     cart: { cartItems },
   } = state;
@@ -17,24 +18,24 @@ export default function Payment() {
     .reduce((a, c) => a + c.quantity * c.price, 0)
     .toFixed(2);
 
-  const [{ isPending }, dispatch] = usePayPalScriptReducer();
+  const [{ isPending }, paypalDispatch] = usePayPalScriptReducer();
 
   useEffect(() => {
     const loadPaypalScript = async () => {
       const clientId = await fetch("/api/keys/paypal").then(response =>
         response.json()
       );
-      dispatch({
+      paypalDispatch({
         type: "resetOptions",
         value: {
           "client-id": clientId,
           currency: "GBP",
         },
       });
-      dispatch({ type: "setLoadingStatus", value: "pending" });
+      paypalDispatch({ type: "setLoadingStatus", value: "pending" });
     };
     loadPaypalScript();
-  }, [dispatch]);
+  }, [paypalDispatch]);
 
   if (status === "loading") {
     return <Layout>Loading...</Layout>;
@@ -66,6 +67,8 @@ export default function Payment() {
               return actions.order.capture().then(details => {
                 const name = details.payer.name.given_name;
                 alert(`Transaction completed by ${name}`);
+                Cookies.remove("cart");
+                dispatch({ type: "CART_RESET" });
               });
             }}
           />
