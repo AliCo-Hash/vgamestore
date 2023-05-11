@@ -9,15 +9,20 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 1250px) {
   .mainGames {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 .frontImage {
-  height: 250px;
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .frontImage {
+    height: 197px;
+  }
 }
 
 .cardDescription {

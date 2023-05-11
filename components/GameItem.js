@@ -11,7 +11,7 @@ export default function GameItem({ game, addToCartHandler }) {
           src={game.coverImage}
           alt={game.name}
           width={500}
-          height={300}
+          height={250}
           priority={true}
           quality={100}
         />
