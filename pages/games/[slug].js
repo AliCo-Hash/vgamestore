@@ -31,7 +31,14 @@ export default function GameScreen(props) {
         <div>
           <h1 className={styles.gameNameTitle}>{game.name}</h1>
           <div className={styles.mainImage}>
-            <Image src={game.coverImage} alt={game.name} fill />
+            <Image
+              src={game.coverImage}
+              alt={game.name}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              priority={false}
+              quality={100}
+            />
           </div>
           <div>
             <div className={styles.gameDescriptionTitle}>Game Description</div>

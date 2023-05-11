@@ -1,14 +1,19 @@
 import Link from "next/link";
 import styles from "../styles/homeGame.module.css";
+import Image from "next/image";
 
 export default function GameItem({ game, addToCartHandler }) {
   return (
     <div>
       <Link href={`/games/${game.slug}`}>
-        <img
+        <Image
           className={styles.frontImage}
           src={game.coverImage}
           alt={game.name}
+          width={500}
+          height={300}
+          priority={true}
+          quality={100}
         />
       </Link>
 

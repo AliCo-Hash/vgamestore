@@ -4,7 +4,6 @@ import { useContext, useState, useEffect } from "react";
 import { Store } from "@/utils/Store";
 import { signOut, useSession } from "next-auth/react";
 import { Menu } from "@headlessui/react";
-import DropdownLink from "./DropdownLink";
 import Cookies from "js-cookie";
 
 export default function Navbar() {
@@ -44,17 +43,14 @@ export default function Navbar() {
             </Menu.Button>
             <Menu.Items className={styles.dropdownContent}>
               <Menu.Item>
-                <DropdownLink className={styles.dropdownLink} href="/profile">
+                <Link className={styles.dropdownLink} href="/profile">
                   Profile
-                </DropdownLink>
+                </Link>
               </Menu.Item>
               <Menu.Item>
-                <DropdownLink
-                  className={styles.dropdownLink}
-                  href="/order-history"
-                >
+                <Link className={styles.dropdownLink} href="/order-history">
                   Order History
-                </DropdownLink>
+                </Link>
               </Menu.Item>
               <Menu.Item>
                 <a
