@@ -37,6 +37,44 @@ export default function Payment() {
     loadPaypalScript();
   }, [paypalDispatch]);
 
+  function onCreateHandler(data, actions) {
+    return actions.order.create({
+      purchase_units: [
+        {
+          amount: {
+            value: totalPrice,
+          },
+        },
+      ],
+    });
+  }
+
+  function onApproveHandler(data, actions) {
+    return actions.order.capture().then(async paymentDetails => {
+      await fetch("/api/orders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          orderItems: cartItems,
+          totalPrice,
+          paymentDetails,
+        }),
+      });
+      const name = paymentDetails.payer.name.given_name;
+      alert(`Transaction completed by ${name}`);
+      Cookies.remove("cart");
+      dispatch({ type: "CART_RESET" });
+      router.push(`/order/${paymentDetails.id}`);
+      // console.log(paymentDetails);
+    });
+  }
+
+  function onErrorHandler(err) {
+    alert("Payment error");
+  }
+
   if (status === "loading") {
     return <Layout>Loading...</Layout>;
   }
@@ -52,26 +90,9 @@ export default function Payment() {
           <div>Loading...</div>
         ) : (
           <PayPalButtons
-            createOrder={(data, actions) => {
-              return actions.order.create({
-                purchase_units: [
-                  {
-                    amount: {
-                      value: totalPrice,
-                    },
-                  },
-                ],
-              });
-            }}
-            onApprove={(data, actions) => {
-              return actions.order.capture().then(details => {
-                const name = details.payer.name.given_name;
-                alert(`Transaction completed by ${name}`);
-                Cookies.remove("cart");
-                dispatch({ type: "CART_RESET" });
-                router.push(`/orders/${details.id}`);
-              });
-            }}
+            createOrder={onCreateHandler}
+            onApprove={onApproveHandler}
+            onError={onErrorHandler}
           />
         )}
 
