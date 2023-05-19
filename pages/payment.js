@@ -58,7 +58,6 @@ export default function Payment() {
         },
         body: JSON.stringify({
           orderItems: cartItems,
-          totalPrice,
           paymentDetails,
         }),
       });
