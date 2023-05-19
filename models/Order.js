@@ -10,10 +10,20 @@ const orderSchema = new mongoose.Schema(
         price: { type: Number, required: true },
       },
     ],
-    paymentDetails: {
-      id: { type: String },
-      status: { type: String },
-    },
+    paymentDetails: [
+      {
+        id: { type: String },
+        status: { type: String },
+        purchase_units: [
+          {
+            amount: {
+              currency_code: { type: String },
+              value: { type: String },
+            },
+          },
+        ],
+      },
+    ],
   },
   {
     timestamps: true,
