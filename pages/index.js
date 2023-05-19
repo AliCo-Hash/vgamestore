@@ -21,7 +21,7 @@ export default function Home({ games }) {
       data.json()
     );
 
-    if (data.gameCodesLength< quantity) {
+    if (data.gameCodesLength < quantity) {
       return toast.error("Sorry, Game is out of stock");
     }
 
