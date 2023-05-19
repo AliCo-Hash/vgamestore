@@ -23,7 +23,7 @@ function CartPage() {
     const data = await fetch(`/api/games/${item._id}`).then(response =>
       response.json()
     );
-    if (data.gameCodes.length < quantity) {
+    if (data.gameCodesLength < quantity) {
       return toast.error("Sorry, Game is out of stock");
     }
 
@@ -73,7 +73,7 @@ function CartPage() {
                         value={item.quantity}
                         onChange={e => updateCartHandler(item, e.target.value)}
                       >
-                        {[...Array(item.gameCodes.length).keys()].map(x => (
+                        {[...Array(item.gameCodesLength).keys()].map(x => (
                           <option key={x + 1} value={x + 1}>
                             {x + 1}
                           </option>

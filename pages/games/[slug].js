@@ -18,7 +18,7 @@ export default function GameScreen(props) {
       data.json()
     );
 
-    if (data.gameCodes.length < quantity) {
+    if (data.gameCodesLength < quantity) {
       return toast.error("Sorry, Game is out of stock");
     }
 
@@ -69,14 +69,21 @@ export async function getServerSideProps(context) {
   const { slug } = params;
 
   await db.connect();
-  const game = await Game.findOne({ slug })
-    .lean()
-    .then(game => JSON.parse(JSON.stringify(game)));
+  const game = await Game.findOne({ slug }).lean();
+
+  const gameCodesLength = game.gameCodes.length;
+  delete game.gameCodes;
+
   await db.disconnect();
 
   return {
     props: {
-      game,
+      game: JSON.parse(
+        JSON.stringify({
+          ...game,
+          gameCodesLength,
+        })
+      ),
     },
   };
 }

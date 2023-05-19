@@ -21,7 +21,7 @@ export default function Home({ games }) {
       data.json()
     );
 
-    if (data.gameCodes.length < quantity) {
+    if (data.gameCodesLength< quantity) {
       return toast.error("Sorry, Game is out of stock");
     }
 
@@ -45,12 +45,20 @@ export default function Home({ games }) {
 
 export async function getServerSideProps() {
   await db.connect();
-  const games = await Game.find()
-    .lean()
-    .then(game => JSON.parse(JSON.stringify(game)));
+  const games = await Game.find().lean();
+
+  const modifiedGames = games.map(game => {
+    const gameCodesLength = game.gameCodes.length;
+    delete game.gameCodes;
+    return {
+      ...game,
+      gameCodesLength,
+    };
+  });
+
   return {
     props: {
-      games,
+      games: JSON.parse(JSON.stringify(modifiedGames)),
     },
   };
 }
