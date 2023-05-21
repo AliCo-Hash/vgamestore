@@ -66,7 +66,6 @@ export default function Payment() {
       Cookies.remove("cart");
       dispatch({ type: "CART_RESET" });
       router.push(`/order/${paymentDetails.id}`);
-      // console.log(paymentDetails);
     });
   }
 
