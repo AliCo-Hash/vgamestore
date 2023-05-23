@@ -55,7 +55,7 @@ function CartPage() {
                   <tr key={item.slug} className={styles.tableBody}>
                     <td>
                       <Link
-                        href={`games/${item.slug}}`}
+                        href={`games/${item.slug}`}
                         className={styles.cartGame}
                       >
                         <Image
