@@ -11,41 +11,49 @@ export default function OrderedScreen({ order }) {
   return (
     <Layout>
       <h1>Your Order</h1>
-      <div>
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {order.orderItems.map(game => (
-              <tr key={game.name} className="check">
-                <td>
-                  <Image
-                    src={game.coverImage}
-                    alt={game.name}
-                    width={200}
-                    height={100}
-                    priority={true}
-                  />
-                  {game.name}
-                </td>
-                <td>{game.quantity}</td>
-                <td>{game.price}</td>
-                <td>
-                  {game.orderedGameCodes.map(code => (
-                    <div key={code}>{code}</div>
-                  ))}
-                </td>
+      <div className={styles.orderGrid}>
+        <div className={styles.orderBox}>
+          <table className={styles.orderTable}>
+            <thead className={styles.tableHead}>
+              <tr className={styles.orderGame}>
+                <th className={styles.orderItem}></th>
+                <th className={styles.orderQuantity}></th>
+                <th className={styles.orderPrice}></th>
+                <th className={styles.orderAction}></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-        <div>{total}</div>
+            </thead>
+            <tbody>
+              {order.orderItems.map(game => (
+                <tr key={game.name} className={styles.tableBody}>
+                  <td>
+                    <div className={styles.orderGameName}>
+                      <Image
+                        className={styles.image}
+                        src={game.coverImage}
+                        alt={game.name}
+                        width={200}
+                        height={100}
+                        priority={true}
+                      />
+                      &nbsp;
+                      {game.name}
+                    </div>
+                  </td>
+                  <td className={styles.orderQuantity}>{game.quantity}</td>
+                  <td className={styles.orderPrice}>{game.price}</td>
+                  <td className={styles.orderCodes}>
+                    {game.orderedGameCodes.map(code => (
+                      <div key={code}>{code}</div>
+                    ))}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className={styles.orderSummary}>
+          <div className={styles.orderTotal}>Total: £{total}</div>
+        </div>
       </div>
     </Layout>
   );

@@ -97,7 +97,7 @@ function CartPage() {
             <ul style={{ listStyle: "none" }}>
               <li>
                 <div className={styles.cartTotal}>
-                  TOTAL ({cartItems.reduce((a, c) => a + c.quantity, 0)}) : £{" "}
+                  TOTAL : £{""}
                   {cartItems
                     .reduce((a, c) => a + c.quantity * c.price, 0)
                     .toFixed(2)}
