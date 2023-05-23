@@ -5,23 +5,25 @@
 
 .cartGrid {
   display: grid;
-  gap: 5px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .cartGrid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(1, 1fr);
+    text-align: center;
+    font-size: smaller;
   }
-}
-
-@media (min-width: 1200px) {
-  .cartGrid {
-    grid-template-columns: 3fr 1fr;
+  .image {
+    width: 100px;
+    height: 60px;
   }
 }
 
 .cartBox {
   overflow-x: auto;
+  grid-column: span 3;
 }
 
 .cartTable {
@@ -73,9 +75,11 @@
   border: none;
   padding: 1.25rem;
   background: #141010;
+  overflow-x: auto;
+  grid-column: span 3;
 }
 
-.cartSubtotal {
+.cartTotal {
   padding-bottom: 0.75rem;
   font-weight: bold;
   font-size: larger;

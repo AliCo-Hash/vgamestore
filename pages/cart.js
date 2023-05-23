@@ -44,10 +44,10 @@ function CartPage() {
             <table className={styles.cartTable}>
               <thead className={styles.tableHead}>
                 <tr>
-                  <th className={styles.cartItem}>Item</th>
-                  <th className={styles.cartQuantity}>Quantity</th>
-                  <th className={styles.cartPrice}>Price</th>
-                  <th className={styles.cartAction}>Action</th>
+                  <th className={styles.cartItem}></th>
+                  <th className={styles.cartQuantity}></th>
+                  <th className={styles.cartPrice}></th>
+                  <th className={styles.cartAction}></th>
                 </tr>
               </thead>
               <tbody>
@@ -59,10 +59,12 @@ function CartPage() {
                         className={styles.cartGame}
                       >
                         <Image
+                          className={styles.image}
                           src={item.coverImage}
                           alt={item.name}
                           width={200}
                           height={100}
+                          priority={true}
                         ></Image>
                         &nbsp;
                         {item.name}
@@ -80,7 +82,7 @@ function CartPage() {
                         ))}
                       </select>
                     </td>
-                    <td className={styles.cartPrice}>{item.price}</td>
+                    <td className={styles.cartPrice}>£{item.price}</td>
                     <td className={styles.cartItemDelete}>
                       <button onClick={() => removeItemHandler(item)}>
                         <TrashIcon className={styles.itemDeleteButton} />
@@ -94,8 +96,8 @@ function CartPage() {
           <div className={styles.cartSummary}>
             <ul style={{ listStyle: "none" }}>
               <li>
-                <div className={styles.cartSubtotal}>
-                  SUBTOTAL ({cartItems.reduce((a, c) => a + c.quantity, 0)}) : £{" "}
+                <div className={styles.cartTotal}>
+                  TOTAL ({cartItems.reduce((a, c) => a + c.quantity, 0)}) : £{" "}
                   {cartItems
                     .reduce((a, c) => a + c.quantity * c.price, 0)
                     .toFixed(2)}
