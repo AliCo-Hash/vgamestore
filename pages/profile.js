@@ -6,22 +6,24 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 export default function Profile() {
-  const { data: session, status } = useSession();
   const router = useRouter();
+  const { data: session, status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      router.push("/signin");
+    },
+  });
   const [changePasswordSection, setChangePasswordSection] = useState(false);
 
   const {
     handleSubmit,
     register,
+    getValues,
     formState: { errors },
   } = useForm();
 
   if (status === "loading") {
-    return <Layout>Loading...</Layout>;
-  }
-
-  if (!session) {
-    router.push("/signin");
+    return <Layout>Loading...;</Layout>;
   }
 
   return (
@@ -44,7 +46,68 @@ export default function Profile() {
             <p className={styles.sectionTitle}>Password</p>
             {changePasswordSection ? (
               <div>
-                <div>form</div>
+                <form onSubmit={handleSubmit(data => console.log(data))}>
+                  <div>
+                    <label htmlFor="oldPassword">Old password &nbsp;</label>
+                    <div>
+                      <input
+                        type="password"
+                        {...register("oldPassword", {
+                          required: "Please enter your old password",
+                        })}
+                        id="oldPassword"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="newPassword">New password &nbsp;</label>
+                    <div>
+                      <input
+                        type="password"
+                        {...register("newPassword", {
+                          required: "Please enter your new password",
+                          minLength: {
+                            value: 8,
+                            message:
+                              "Password must be 8 or more characters long",
+                          },
+                        })}
+                        id="newPassword"
+                      />
+                    </div>
+                    {errors.newPassword && (
+                      <span className={styles.missingMessage}>
+                        {errors.newPassword.message}
+                      </span>
+                    )}
+                  </div>
+                  <div>
+                    <label htmlFor="confirmPassword">
+                      Confirm Password &nbsp;
+                    </label>
+                    <div>
+                      <input
+                        type="password"
+                        {...register("confirmPassword", {
+                          required: "Please enter a confirmed password.",
+                          validate: value => value === getValues("password"),
+                          minLength: {
+                            value: 8,
+                          },
+                        })}
+                        id="confirmPassword"
+                      />
+                    </div>
+
+                    {errors.confirmPassword &&
+                      errors.confirmPassword.type === "validate" && (
+                        <div>Password do not match</div>
+                      )}
+                  </div>
+                  <div>
+                    <button>Save</button>
+                  </div>
+                </form>
                 <button onClick={() => setChangePasswordSection(false)}>
                   Cancel
                 </button>

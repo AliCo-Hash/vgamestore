@@ -8,8 +8,13 @@ import { Store } from "@/utils/Store";
 import Cookies from "js-cookie";
 
 export default function Payment() {
-  const { data: session, status } = useSession();
   const router = useRouter();
+  const { status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      router.push("/signin");
+    },
+  });
   const { state, dispatch } = useContext(Store);
   const {
     cart: { cartItems },
@@ -74,11 +79,7 @@ export default function Payment() {
   }
 
   if (status === "loading") {
-    return <Layout>Loading...</Layout>;
-  }
-
-  if (!session) {
-    router.push("/signin");
+    return <Layout>Loading...;</Layout>;
   }
 
   return (

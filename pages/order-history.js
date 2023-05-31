@@ -7,15 +7,16 @@ import { useRouter } from "next/router";
 import styles from "styles/order.module.css";
 
 export default function OrderHistory({ orders }) {
-  const { data: session, status } = useSession();
   const router = useRouter();
+  const { status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      router.push("/signin");
+    },
+  });
 
   if (status === "loading") {
-    return <Layout>Loading...</Layout>;
-  }
-
-  if (!session) {
-    router.push("/signin");
+    return <Layout>Loading...;</Layout>;
   }
 
   return (
