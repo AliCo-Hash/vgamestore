@@ -4,6 +4,9 @@ import { useRouter } from "next/router";
 import styles from "../styles/profile.module.css";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { signIn } from "next-auth/react";
+import { toast } from "react-toastify";
+import { getError } from "@/utils/error";
 
 export default function Profile() {
   const router = useRouter();
@@ -20,7 +23,36 @@ export default function Profile() {
     register,
     getValues,
     formState: { errors },
+    reset,
   } = useForm();
+
+  const submitHandler = async ({ oldPassword, newPassword }) => {
+    try {
+      await fetch("api/auth/change-password", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: session.user.email,
+          oldPassword,
+          newPassword,
+        }),
+      });
+
+      const result = await signIn("credentials", {
+        redirect: false,
+        email: session.user.email,
+        password: newPassword,
+      });
+
+      if (result.error) {
+        toast.error(result.error);
+      }
+    } catch (err) {
+      toast.error(getError(err));
+    }
+  };
 
   if (status === "loading") {
     return <Layout>Loading...;</Layout>;
@@ -46,7 +78,7 @@ export default function Profile() {
             <p className={styles.sectionTitle}>Password</p>
             {changePasswordSection ? (
               <div>
-                <form onSubmit={handleSubmit(data => console.log(data))}>
+                <form onSubmit={handleSubmit(submitHandler)}>
                   <div>
                     <label htmlFor="oldPassword">Old password &nbsp;</label>
                     <div>
@@ -66,6 +98,7 @@ export default function Profile() {
                         type="password"
                         {...register("newPassword", {
                           required: "Please enter your new password",
+                          validate: value => value != getValues("oldPassword"),
                           minLength: {
                             value: 8,
                             message:
@@ -78,6 +111,10 @@ export default function Profile() {
                     {errors.newPassword && (
                       <span className={styles.missingMessage}>
                         {errors.newPassword.message}
+                        {errors.newPassword &&
+                          errors.newPassword.type === "validate" && (
+                            <div>New password can not match old password</div>
+                          )}
                       </span>
                     )}
                   </div>
@@ -90,7 +127,7 @@ export default function Profile() {
                         type="password"
                         {...register("confirmPassword", {
                           required: "Please enter a confirmed password.",
-                          validate: value => value === getValues("password"),
+                          validate: value => value === getValues("newPassword"),
                           minLength: {
                             value: 8,
                           },
@@ -101,14 +138,19 @@ export default function Profile() {
 
                     {errors.confirmPassword &&
                       errors.confirmPassword.type === "validate" && (
-                        <div>Password do not match</div>
+                        <div>Passwords do not match</div>
                       )}
                   </div>
                   <div>
                     <button>Save</button>
                   </div>
                 </form>
-                <button onClick={() => setChangePasswordSection(false)}>
+                <button
+                  onClick={() => {
+                    setChangePasswordSection(false);
+                    reset();
+                  }}
+                >
                   Cancel
                 </button>
               </div>

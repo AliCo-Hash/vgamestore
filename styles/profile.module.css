@@ -12,9 +12,6 @@
   padding: 1rem;
 }
 
-.nameContainer {
-}
-
 .sectionTitle {
   font-size: large;
   font-weight: 700;
@@ -38,12 +35,6 @@
   padding-top: 0.5rem;
   justify-content: space-between;
   background-color: #141010;
-}
-
-.passwordStars {
-}
-
-.passwordUpdateButtonContainer {
 }
 
 .passwordUpdateButton {

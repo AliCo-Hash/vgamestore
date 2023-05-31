@@ -131,7 +131,7 @@ export default function SignInPage() {
             {errors.confirmPassword &&
               errors.confirmPassword.type === "validate" && (
                 <div className={styles.missingMessage}>
-                  Password do not match
+                  Passwords do not match
                 </div>
               )}
           </div>

@@ -7,4 +7,4 @@ This is an e-commerce store that is being built using Next.js. It is a modern, l
 - Create profile screen
 - Create footer
 
--edge cases for update password: make sure new password does not match the old password
+
