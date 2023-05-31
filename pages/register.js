@@ -54,7 +54,7 @@ export default function SignInPage() {
   };
 
   return (
-    <Layout pageTitle="Sign In">
+    <Layout pageTitle="register">
       <form className={styles.form} onSubmit={handleSubmit(submitHandler)}>
         <h1 className={styles.title}>Sign Up</h1>
         <div className={styles.inputSections}>

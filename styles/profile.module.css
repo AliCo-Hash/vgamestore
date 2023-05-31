@@ -1,0 +1,59 @@
+.container {
+  padding-top: 3rem;
+}
+
+.personalTitle {
+  padding-bottom: 1rem;
+  font-size: x-large;
+}
+
+.personalInformationContainer {
+  background-color: #141010;
+  padding: 1rem;
+}
+
+.nameContainer {
+}
+
+.sectionTitle {
+  font-size: large;
+  font-weight: 700;
+}
+
+.userDetails {
+  padding-top: 0.5rem;
+}
+
+.emailContainer {
+  padding-top: 1rem;
+}
+
+.passwordContainer {
+  padding-top: 1rem;
+}
+
+.passwordStarsContainer {
+  display: flex;
+  align-items: center;
+  padding-top: 0.5rem;
+  justify-content: space-between;
+  background-color: #141010;
+}
+
+.passwordStars {
+}
+
+.passwordUpdateButtonContainer {
+}
+
+.passwordUpdateButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  color: #8a2be2;
+}
+
+.horizontalLine {
+  margin-top: 1rem;
+}

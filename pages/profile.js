@@ -1,11 +1,20 @@
 import Layout from "@/components/Layout";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import styles from "../styles/profile.module.css";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 
-export default function Profile({ user }) {
+export default function Profile() {
   const { data: session, status } = useSession();
   const router = useRouter();
-  console.log(session);
+  const [changePasswordSection, setChangePasswordSection] = useState(false);
+
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm();
 
   if (status === "loading") {
     return <Layout>Loading...</Layout>;
@@ -14,29 +23,45 @@ export default function Profile({ user }) {
   if (!session) {
     router.push("/signin");
   }
+
   return (
     <Layout>
       <h1>{session.user.name}</h1>
-      <div>
-        <h3>Personal Information</h3>
-        <div>
-          <div>
-            <p>Name</p>
-            <p>{session.user.name}</p>
+      <div className={styles.container}>
+        <p className={styles.personalTitle}>Personal Information</p>
+        <div className={styles.personalInformationContainer}>
+          <div className={styles.nameContainer}>
+            <p className={styles.sectionTitle}>Name</p>
+            <p className={styles.userDetails}>{session.user.name}</p>
           </div>
-          <div>
-            <p>Email</p>
-            <p>{session.user.email}</p>
+          <hr className={styles.horizontalLine} />
+          <div className={styles.emailContainer}>
+            <p className={styles.sectionTitle}>Email</p>
+            <p className={styles.userDetails}>{session.user.email}</p>
           </div>
-          <div>
-            <button>Update</button>
-          </div>
-          <div>
-            <p>Password</p>
-            <p>******</p>
-          </div>
-          <div>
-            <button>Update</button>
+          <hr className={styles.horizontalLine} />
+          <div className={styles.passwordContainer}>
+            <p className={styles.sectionTitle}>Password</p>
+            {changePasswordSection ? (
+              <div>
+                <div>form</div>
+                <button onClick={() => setChangePasswordSection(false)}>
+                  Cancel
+                </button>
+              </div>
+            ) : (
+              <div className={styles.passwordStarsContainer}>
+                <p className={styles.passwordStars}>******</p>
+                <div className={styles.passwordUpdateButtonContainer}>
+                  <button
+                    className={styles.passwordUpdateButton}
+                    onClick={() => setChangePasswordSection(true)}
+                  >
+                    Update
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
