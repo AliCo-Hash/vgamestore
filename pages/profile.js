@@ -27,7 +27,7 @@ export default function Profile() {
 
   const submitHandler = async ({ oldPassword, newPassword }) => {
     try {
-      const response = await fetch("api/auth/change-password", {
+      const response = await fetch("api/change-password", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
