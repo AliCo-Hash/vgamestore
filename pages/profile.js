@@ -77,10 +77,11 @@ export default function Profile() {
             {changePasswordSection ? (
               <div>
                 <form onSubmit={handleSubmit(submitHandler)}>
-                  <div>
-                    <label htmlFor="oldPassword">Old password &nbsp;</label>
+                  <div className={styles.passwordContainer}>
+                    <label htmlFor="oldPassword">Old Password</label>
                     <div>
                       <input
+                        className={styles.passwordForm}
                         type="password"
                         {...register("oldPassword", {
                           required: "Please enter your old password",
@@ -89,10 +90,11 @@ export default function Profile() {
                       />
                     </div>
                   </div>
-                  <div>
-                    <label htmlFor="newPassword">New password &nbsp;</label>
+                  <div className={styles.passwordContainer}>
+                    <label htmlFor="newPassword">New Password</label>
                     <div>
                       <input
+                        className={styles.passwordForm}
                         type="password"
                         {...register("newPassword", {
                           required: "Please enter your new password",
@@ -116,12 +118,13 @@ export default function Profile() {
                       </span>
                     )}
                   </div>
-                  <div>
+                  <div className={styles.passwordContainer}>
                     <label htmlFor="confirmPassword">
                       Confirm Password &nbsp;
                     </label>
                     <div>
                       <input
+                        className={styles.passwordForm}
                         type="password"
                         {...register("confirmPassword", {
                           required: "Please enter a confirmed password.",
@@ -138,18 +141,22 @@ export default function Profile() {
                         <div>Passwords do not match</div>
                       )}
                   </div>
-                  <div>
-                    <button>Save</button>
+                  <div className={styles.buttonContainer}>
+                    <button type="submit" className={styles.saveButton}>
+                      Save
+                    </button>
+                    <button
+                      className={styles.cancelButton}
+                      type="button"
+                      onClick={() => {
+                        setChangePasswordSection(false);
+                        reset();
+                      }}
+                    >
+                      Cancel
+                    </button>
                   </div>
                 </form>
-                <button
-                  onClick={() => {
-                    setChangePasswordSection(false);
-                    reset();
-                  }}
-                >
-                  Cancel
-                </button>
               </div>
             ) : (
               <div className={styles.passwordStarsContainer}>

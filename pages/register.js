@@ -66,7 +66,7 @@ export default function SignInPage() {
                 required: "Please enter your full name",
                 pattern: /^[A-Za-z]+$/i,
               })}
-              className={styles.inputBox}
+              className={styles.formInput}
               id="name"
               autoFocus
             />
@@ -79,6 +79,7 @@ export default function SignInPage() {
           <div className={styles.inputSections}>
             <label htmlFor="email">Email</label>
             <input
+              className={styles.formInput}
               type="email"
               {...register("email", {
                 required: "Please enter your email",
@@ -87,7 +88,6 @@ export default function SignInPage() {
                   message: "Please enter a valid email",
                 },
               })}
-              className={styles.inputBox}
               id="email"
             />
             {errors.email && (
@@ -99,6 +99,7 @@ export default function SignInPage() {
           <div className={styles.inputSections}>
             <label htmlFor="password">Password &nbsp;</label>
             <input
+              className={styles.formInput}
               type="password"
               {...register("password", {
                 required: "Please enter your password",
@@ -118,6 +119,7 @@ export default function SignInPage() {
           <div className={styles.inputSections}>
             <label htmlFor="confirmPassword">Confirm Password &nbsp;</label>
             <input
+              className={styles.formInput}
               type="password"
               {...register("confirmPassword", {
                 required: "Please enter confirm Password",

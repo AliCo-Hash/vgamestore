@@ -48,6 +48,7 @@ export default function SignInPage() {
           <div className={styles.nameInputSection}>
             <label htmlFor="email">Email</label>
             <input
+              className={styles.formInput}
               type="email"
               {...register("email", {
                 required: "Please enter email",
@@ -56,7 +57,6 @@ export default function SignInPage() {
                   message: "Please enter a valid email",
                 },
               })}
-              className={styles.inputBox}
               id="email"
               autoFocus
             />
@@ -69,6 +69,7 @@ export default function SignInPage() {
           <div className={styles.inputSections}>
             <label htmlFor="password">Password &nbsp;</label>
             <input
+              className={styles.formInput}
               type="password"
               {...register("password", {
                 required: "Please enter password",

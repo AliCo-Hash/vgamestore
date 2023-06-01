@@ -46,9 +46,13 @@
   text-align: center;
   text-transform: uppercase;
   vertical-align: bottom;
-  margin-top: 13px;
+  margin-top: 1.5rem;
   padding: 9px 12px;
   width: 100%;
+}
+
+.signInButton:hover {
+  background-color: #6a1d99;
 }
 
 .missingMessage {
@@ -64,6 +68,10 @@
   text-decoration: underline;
 }
 
+.register:hover {
+  color: #6d9abf;
+}
+
 .errorMessageContainer {
   height: 20px;
 }
@@ -71,4 +79,9 @@
 .detailContainer {
   background-color: #161618;
   padding: 1rem;
+}
+
+.formInput {
+  height: 2rem;
+  font-size: medium;
 }
