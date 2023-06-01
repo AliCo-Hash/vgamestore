@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import styles from "../styles/profile.module.css";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { signIn } from "next-auth/react";
 import { toast } from "react-toastify";
 import { getError } from "@/utils/error";
 
@@ -28,7 +27,7 @@ export default function Profile() {
 
   const submitHandler = async ({ oldPassword, newPassword }) => {
     try {
-      await fetch("api/auth/change-password", {
+      const response = await fetch("api/auth/change-password", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,15 +38,14 @@ export default function Profile() {
           newPassword,
         }),
       });
+      const data = await response.json();
 
-      const result = await signIn("credentials", {
-        redirect: false,
-        email: session.user.email,
-        password: newPassword,
-      });
-
-      if (result.error) {
-        toast.error(result.error);
+      if (response.ok) {
+        toast.success(data.message);
+        setChangePasswordSection(false);
+        reset();
+      } else {
+        toast.error(data.message);
       }
     } catch (err) {
       toast.error(getError(err));
@@ -132,7 +130,6 @@ export default function Profile() {
                             value: 8,
                           },
                         })}
-                        id="confirmPassword"
                       />
                     </div>
 
