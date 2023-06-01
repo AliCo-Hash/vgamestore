@@ -27,27 +27,22 @@ export default function GameScreen(props) {
 
   return (
     <Layout pageTitle={game.name}>
-      <div className={styles.individualGameMain}>
-        <div>
-          <h1 className={styles.gameNameTitle}>{game.name}</h1>
-          <div className={styles.mainImage}>
+      <div className={styles.container}>
+        <div className={styles.gameInfo}>
+          <div className={styles.gameNameTitle}>{game.name}</div>
+          <div className={styles.mainImageContainer}>
             <Image
+              className={styles.frontImage}
               src={game.coverImage}
               alt={game.name}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              priority={false}
+              width={700}
+              height={350}
+              priority={true}
               quality={100}
             />
           </div>
-          <div>
-            <div className={styles.gameDescriptionTitle}>Game Description</div>
-            <div className={styles.gameDescription}>{game.description}</div>
-          </div>
-        </div>
-        <div className={styles.priceCard}>
-          <div className={styles.price}>£{game.price}</div>
-          <div>
+          <div className={styles.priceCard}>
+            <div className={styles.price}>£{game.price}</div>
             <button
               className={styles.addToCartButton}
               onClick={addToCartHandler}
@@ -55,13 +50,15 @@ export default function GameScreen(props) {
               Add to cart
             </button>
           </div>
+          <div>
+            <div className={styles.gameDescriptionTitle}>Game Description</div>
+            <hr />
+            <div className={styles.gameDescription}>{game.description}</div>
+          </div>
         </div>
       </div>
     </Layout>
   );
-}
-
-{
 }
 
 export async function getServerSideProps(context) {
