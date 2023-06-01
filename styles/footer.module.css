@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #181515;
+  height: 3rem;
+}
+
+.aboutLink {
+  text-decoration: underline;
+  font-weight: 700;
+}

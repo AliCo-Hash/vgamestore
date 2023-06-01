@@ -1,3 +1,12 @@
+import Link from "next/link";
+import styles from "../styles/footer.module.css";
+
 export default function Footer() {
-  return <h1>footer</h1>;
+  return (
+    <nav className={styles.container}>
+      <Link href="/about" className={styles.aboutLink}>
+        About us
+      </Link>
+    </nav>
+  );
 }

@@ -4,7 +4,4 @@ This is an e-commerce store that is being built using Next.js. It is a modern, l
 
 ## ToDo
 
-- Create profile screen
 - Create footer
-
-
