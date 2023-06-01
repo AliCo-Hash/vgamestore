@@ -28,47 +28,51 @@ export default function Navbar() {
         Awesome Games
       </Link>
       <div className={styles.textRight}>
-        <Link className={styles.textCart} href="/cart">
-          Cart
-          {cartItemsCount > 0 && (
-            <span className={styles.cart}>{cartItemsCount}</span>
-          )}
-        </Link>
-        {status === "loading" ? (
-          "Loading"
-        ) : session?.user ? (
-          <Menu as="div" className={styles.dropdown}>
-            <Menu.Button className={styles.dropdownBtn}>
-              {session.user.name}
-            </Menu.Button>
-            <Menu.Items className={styles.dropdownContent}>
-              <Menu.Item>
-                <Link className={styles.dropdownLink} href="/profile">
-                  Profile
-                </Link>
-              </Menu.Item>
-              <Menu.Item>
-                <Link className={styles.dropdownLink} href="/order-history">
-                  Order History
-                </Link>
-              </Menu.Item>
-              <Menu.Item>
-                <a
-                  className={styles.dropdownLink}
-                  href="#"
-                  onClick={logoutClickHandler}
-                >
-                  Logout
-                </a>
-              </Menu.Item>
-            </Menu.Items>
-          </Menu>
-        ) : (
-          <Link className={styles.textSignIn} href="/signin">
-            Sign in
+        <div className={styles.menuContainer}>
+          <Link className={styles.textCart} href="/cart">
+            Cart
+            {cartItemsCount > 0 && (
+              <span className={styles.cart}>{cartItemsCount}</span>
+            )}
           </Link>
-        )}
+          {status === "loading" ? (
+            "Loading"
+          ) : session?.user ? (
+            <Menu as="div" className={styles.dropdown}>
+              <Menu.Button className={styles.dropdownBtn}>
+                {session.user.name}
+              </Menu.Button>
+              <Menu.Items className={styles.dropdownContent}>
+                <Menu.Item>
+                  <Link className={styles.dropdownLink} href="/profile">
+                    Profile
+                  </Link>
+                </Menu.Item>
+                <Menu.Item>
+                  <Link className={styles.dropdownLink} href="/order-history">
+                    Order History
+                  </Link>
+                </Menu.Item>
+                <Menu.Item>
+                  <a
+                    className={styles.dropdownLink}
+                    href="#"
+                    onClick={logoutClickHandler}
+                  >
+                    Logout
+                  </a>
+                </Menu.Item>
+              </Menu.Items>
+            </Menu>
+          ) : (
+            <Link className={styles.textSignIn} href="/signin">
+              Sign in
+            </Link>
+          )}
+        </div>
       </div>
     </nav>
   );
 }
+
+

@@ -15,16 +15,23 @@
 }
 
 .textRight {
-  font-size: 1rem;
-  line-height: 1.5rem;
-  padding: 2rem 16px;
+  display: flex;
+  align-items: center;
+}
+
+.menuContainer {
+  display: flex;
+  align-items: center;
 }
 
 .textCart {
+  font-size: large;
   padding-right: 30px;
 }
 
 .textSignIn {
+  font-size: large;
+
   padding-right: 16px;
 }
 
@@ -48,7 +55,7 @@
   color: aliceblue;
   background: none;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: medium;
+  font-size: large;
   cursor: pointer;
   padding: 4px 8px;
 }
@@ -71,4 +78,24 @@
 
 .dropdownLink:hover {
   background: #8a2be2;
+}
+
+@media (max-width: 768px) {
+  .textRight {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 1rem;
+  }
+
+  .menuContainer {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .textCart,
+  .textSignIn {
+    padding-right: 0;
+    margin-bottom: 1rem;
+  }
 }
