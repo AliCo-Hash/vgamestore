@@ -1,4 +1,4 @@
-import bcryptjs, { hash } from "bcryptjs";
+import bcryptjs from "bcryptjs";
 import User from "@/models/User";
 import db from "@/utils/db";
 
@@ -21,20 +21,27 @@ async function handler(req, res) {
     return;
   }
 
-  await db.connect();
+  try {
+    await db.connect();
 
-  const user = await User.findOne({ email: email });
-  if (bcryptjs.compareSync(oldPassword, user.password)) {
-    user.password = bcryptjs.hashSync(newPassword);
-    user.save();
-    await db.disconnect();
-    res.status(200).json({
-      message: "Password changed successfully",
-    });
-  } else {
-    await db.disconnect();
-    res.status(422).json({
-      message: "Old password is incorrect",
+    const user = await User.findOne({ email: email });
+    if (bcryptjs.compareSync(oldPassword, user.password)) {
+      user.password = bcryptjs.hashSync(newPassword);
+      await user.save();
+      await db.disconnect();
+      res.status(200).json({
+        message: "Password changed successfully",
+      });
+    } else {
+      await db.disconnect();
+      res.status(422).json({
+        message: "Old password is incorrect",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "Internal Server Error",
     });
   }
 }
