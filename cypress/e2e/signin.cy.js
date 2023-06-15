@@ -40,4 +40,17 @@ describe("Sign In Page", () => {
     cy.get("form").submit();
     cy.get("span").contains("Password must be 8 or more characters long");
   });
+
+  it("should log in with correct credentials and redirect to home page", () => {
+    const name = Cypress.env("name");
+    const email = Cypress.env("email");
+    const password = Cypress.env("password");
+
+    cy.get('input[name="email"]').type(email);
+    cy.get('input[name="password"]').type(password);
+    cy.get("button").contains("Login").click();
+
+    cy.location("pathname", { timeout: 5000 }).should("equal", "/");
+    cy.contains(name);
+  });
 });

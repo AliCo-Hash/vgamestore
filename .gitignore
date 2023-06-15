@@ -37,3 +37,4 @@ cypress/e2e/2-advanced-examples
 cypress/fixtures/example.json
 cypress/support/commands.js
 cypress/support/e2e.js
+cypress.env.json
