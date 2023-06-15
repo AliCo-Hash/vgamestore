@@ -93,3 +93,8 @@
   background: #8a2be2;
   color: aliceblue;
 }
+
+.browseGames {
+  color: #8a2be2;
+  text-decoration: underline;
+}

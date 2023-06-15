@@ -36,7 +36,9 @@ function CartPage() {
       {cartItems.length == 0 ? (
         <div>
           Your cart is empty. Go ahead and add some cool stuff to it!{" "}
-          <Link href="/">Browse Games</Link>
+          <Link className={styles.browseGames} href="/">
+            Browse Games
+          </Link>
         </div>
       ) : (
         <div className={styles.cartGrid}>
