@@ -13,9 +13,31 @@ describe("Sign In Page", () => {
     cy.get("a[href*=register]").contains("Register");
   });
 
-  it("should display error messages for invalid form submission", () => {
+  it("should display error messages for missing form submission", () => {
     cy.get("button").contains("Login").click();
     cy.get("span").contains("Please enter email");
     cy.get("span").contains("Please enter password");
+  });
+
+  it("should display incorrect email message error message", () => {
+    cy.get('input[name="email"]').then(input => {
+      input.val("invalidemail");
+      input.trigger("input");
+    });
+    cy.get('input[name="password"]').type("password");
+
+    cy.get("form").submit();
+    cy.get("span").contains("Please enter a valid email");
+  });
+
+  it("should display min password length error message", () => {
+    cy.get('input[name="password"]').then(input => {
+      input.val("pass");
+      input.trigger("input");
+    });
+    cy.get('input[name="email"]').type("user@user.com");
+
+    cy.get("form").submit();
+    cy.get("span").contains("Password must be 8 or more characters long");
   });
 });
