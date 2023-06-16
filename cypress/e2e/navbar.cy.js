@@ -45,4 +45,12 @@ describe("Navbar", () => {
       "http://localhost:3000/order-history"
     );
   });
+
+  it("should navigate to the home page on logout", () => {
+    loginAndOpenMenu();
+
+    cy.contains("Logout").click();
+    cy.url({ timeout: 5000 }).should("eq", "http://localhost:3000/");
+    cy.contains(Cypress.env("name")).should("not.exist");
+  });
 });
