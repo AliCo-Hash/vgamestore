@@ -50,7 +50,7 @@ describe("Sign In Page", () => {
     cy.get('input[name="password"]').type(password);
     cy.get("button").contains("Login").click();
 
-    cy.location("pathname", { timeout: 5000 }).should("equal", "/");
+    cy.url({ timeout: 5000 }).should("eq", "http://localhost:3000/");
     cy.contains(name);
   });
 });

@@ -1,3 +1,11 @@
+const loginAndOpenMenu = () => {
+  cy.visit("/signin");
+  cy.get('input[name="email"]').type(Cypress.env("email"));
+  cy.get('input[name="password"]').type(Cypress.env("password"));
+  cy.get("button").contains("Login").click();
+  cy.contains(Cypress.env("name")).click();
+};
+
 describe("Navbar", () => {
   beforeEach(() => {
     cy.visit("/");
@@ -14,17 +22,17 @@ describe("Navbar", () => {
   });
 
   it("should have a dropdown menu with correct options", () => {
-    cy.visit("/signin");
-    const name = Cypress.env("name");
-    const email = Cypress.env("email");
-    const password = Cypress.env("password");
-    cy.get('input[name="email"]').type(email);
-    cy.get('input[name="password"]').type(password);
-    cy.get("button").contains("Login").click();
+    loginAndOpenMenu();
 
-    cy.contains(name).click();
     cy.contains("Profile");
     cy.contains("Order History");
     cy.contains("Logout");
+  });
+
+  it("should navigate to the profile page", () => {
+    loginAndOpenMenu();
+
+    cy.contains("Profile").click();
+    cy.url({ timeout: 5000 }).should("eq", "http://localhost:3000/profile");
   });
 });
