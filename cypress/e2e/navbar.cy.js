@@ -35,4 +35,14 @@ describe("Navbar", () => {
     cy.contains("Profile").click();
     cy.url({ timeout: 5000 }).should("eq", "http://localhost:3000/profile");
   });
+
+  it("should navigate to the order history page", () => {
+    loginAndOpenMenu();
+
+    cy.contains("Order History").click();
+    cy.url({ timeout: 5000 }).should(
+      "eq",
+      "http://localhost:3000/order-history"
+    );
+  });
 });

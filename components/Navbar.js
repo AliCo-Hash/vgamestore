@@ -19,7 +19,7 @@ export default function Navbar() {
   const logoutClickHandler = () => {
     Cookies.remove("cart");
     dispatch({ type: "CART_RESET" });
-    signOut({ callbackUrl: "/signin" });
+    signOut({ callbackUrl: "/" });
   };
 
   return (
@@ -74,5 +74,3 @@ export default function Navbar() {
     </nav>
   );
 }
-
-
