@@ -12,4 +12,19 @@ describe("Navbar", () => {
     cy.get("a[href*=signin]").click();
     cy.url().should("include", "/signin");
   });
+
+  it("should have a dropdown menu with correct options", () => {
+    cy.visit("/signin");
+    const name = Cypress.env("name");
+    const email = Cypress.env("email");
+    const password = Cypress.env("password");
+    cy.get('input[name="email"]').type(email);
+    cy.get('input[name="password"]').type(password);
+    cy.get("button").contains("Login").click();
+
+    cy.contains(name).click();
+    cy.contains("Profile");
+    cy.contains("Order History");
+    cy.contains("Logout");
+  });
 });
