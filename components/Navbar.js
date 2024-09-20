@@ -53,6 +53,13 @@ export default function Navbar() {
                     Order History
                   </Link>
                 </Menu.Item>
+                {session.user.isAdmin && (
+                  <Menu.Item>
+                    <Link className={styles.dropdownLink} href="/add-game">
+                      Add Game
+                    </Link>
+                  </Menu.Item>
+                )}
                 <Menu.Item>
                   <a
                     className={styles.dropdownLink}
