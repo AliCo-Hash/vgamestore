@@ -10,3 +10,7 @@
   text-decoration: underline;
   font-weight: 700;
 }
+
+.aboutLink:hover {
+  color: #8a2be2;
+}

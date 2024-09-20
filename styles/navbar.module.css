@@ -14,6 +14,10 @@
   padding: 2rem 16px;
 }
 
+.textHome:hover {
+  color: #8a2be2;
+}
+
 .textRight {
   display: flex;
   align-items: center;
@@ -29,6 +33,10 @@
   padding-right: 30px;
 }
 
+.textCart:hover {
+  color: #8a2be2;
+}
+
 .textSignIn {
   font-size: large;
 
@@ -38,7 +46,7 @@
 .cart {
   margin-left: 4px;
   border-radius: 9999px;
-  background-color: #8a2be2;
+  background-color: lightblue;
   padding: 4px 8px;
   font-size: 12px;
   line-height: 1rem;
@@ -58,6 +66,10 @@
   font-size: large;
   cursor: pointer;
   padding: 4px 8px;
+}
+
+.dropdownBtn:hover {
+  color: #8a2be2;
 }
 
 .dropdownContent {

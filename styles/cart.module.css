@@ -95,6 +95,10 @@
 }
 
 .browseGames {
-  color: #8a2be2;
+  color: lightblue;
   text-decoration: underline;
+}
+
+.browseGames:hover {
+  color: #8a2be2;
 }
